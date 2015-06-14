@@ -1,8 +1,8 @@
 
 describe("JSIntro Test Suite", function(){
+	var JSIntro = require("../../src/JSIntro");
 
 	describe("JSIntro-Sum", function(){
-		var JSIntro = require("../../git/newsfeed/JSIntro");
 
 		it("sum of 2 and 3 is 5", function(){
 
@@ -19,7 +19,6 @@ describe("JSIntro Test Suite", function(){
 	});
 
 	describe("JSIntro-SumOfArray", function(){
-		var JSIntro = require("../../git/newsfeed/JSIntro");
 
 		it("sum of 2 and 3 is 5", function(){
 
@@ -29,8 +28,26 @@ describe("JSIntro Test Suite", function(){
 
 	});
 
+	describe("JSIntro-SumOfUniqueNumbers", function(){
+
+		it("sum of 2,3,3,2 is 5", function(){
+
+			var i = JSIntro.SumOfUniqueNumbers([2,3,3,2]);
+			expect(i).toEqual(5);
+		});
+
+		it("sum of 2,3,4 is 9", function(){
+
+			var i = JSIntro.SumOfUniqueNumbers([2,3,4]);
+			expect(i).toEqual(9);
+		});
+		it("sum of 1,2,3,4,3,3 is 10", function(){
+
+			var i = JSIntro.SumOfUniqueNumbers([1,2,3,4,3,3]);
+			expect(i).toEqual(10);
+		});
+	});
 	describe("JSIntro-ReverseString", function(){
-		var JSIntro = require("../../git/newsfeed/JSIntro");
 
 		it("abc reversed is cba", function(){
 
@@ -38,5 +55,16 @@ describe("JSIntro Test Suite", function(){
 			expect(str).toEqual("cba");
 		});
 
+		it("abcd reversed is dcba", function(){
+
+			var str = JSIntro.ReverseString("abcd");
+			expect(str).toEqual("dcba");
+		});
+
+		it("a reversed is a", function(){
+
+			var str = JSIntro.ReverseString("a");
+			expect(str).toEqual("a");
+		});
 	});
 });
