@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+<testsuite name="JSIntro Test Suite" errors="0" tests="0" failures="0" time="0" timestamp="2015-06-18T10:36:22">
+</testsuite>
+<testsuite name="JSIntro Test Suite.JSIntro-Sum" errors="0" tests="2" failures="0" time="0.016" timestamp="2015-06-18T10:36:22">
+  <testcase classname="JSIntro Test Suite.JSIntro-Sum" name="sum of 2 and 3 is 5" time="0.016"></testcase>
+  <testcase classname="JSIntro Test Suite.JSIntro-Sum" name="sum of -1 and 3 is 2" time="0"></testcase>
+</testsuite>
+<testsuite name="JSIntro Test Suite.JSIntro-SumOfArray" errors="0" tests="1" failures="0" time="0" timestamp="2015-06-18T10:36:22">
+  <testcase classname="JSIntro Test Suite.JSIntro-SumOfArray" name="sum of 2 and 3 is 5" time="0"></testcase>
+</testsuite>
+<testsuite name="JSIntro Test Suite.JSIntro-SumOfUniqueNumbers" errors="0" tests="3" failures="0" time="0" timestamp="2015-06-18T10:36:22">
+  <testcase classname="JSIntro Test Suite.JSIntro-SumOfUniqueNumbers" name="sum of 2,3,3,2 is 5" time="0"></testcase>
+  <testcase classname="JSIntro Test Suite.JSIntro-SumOfUniqueNumbers" name="sum of 2,3,4 is 9" time="0"></testcase>
+  <testcase classname="JSIntro Test Suite.JSIntro-SumOfUniqueNumbers" name="sum of 1,2,3,4,3,3 is 10" time="0"></testcase>
+</testsuite>
+<testsuite name="JSIntro Test Suite.JSIntro-ReverseString" errors="0" tests="3" failures="0" time="0" timestamp="2015-06-18T10:36:22">
+  <testcase classname="JSIntro Test Suite.JSIntro-ReverseString" name="abc reversed is cba" time="0"></testcase>
+  <testcase classname="JSIntro Test Suite.JSIntro-ReverseString" name="abcd reversed is dcba" time="0"></testcase>
+  <testcase classname="JSIntro Test Suite.JSIntro-ReverseString" name="a reversed is a" time="0"></testcase>
+</testsuite>
+</testsuites>
