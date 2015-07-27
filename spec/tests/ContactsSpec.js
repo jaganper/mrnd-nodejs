@@ -1,101 +1,117 @@
+describe("Contacts Test Suite", function() {
 
-describe("Contacts Test Suite", function(){
+    //var request = require('request');
+    var request = require('C:/Program Files/nodejs/node_modules/npm/node_modules/request')
+    var base_url = "http://mycontactsvc.com:3000";
+    var contacts_url = base_url + "/contacts";
 
-	//var request = require('request');
-	var request = require('C:/Program Files/nodejs/node_modules/npm/node_modules/request')
-	var base_url = "http://mycontactsvc.com:3000";
-	var contacts_url = base_url + "/contacts";
+    describe("hello world", function() {
 
-	describe("hello world", function(){
+        it("hello world", function(done) {
+            var jasmineObj = this;
+            request.get(base_url, function(error, response, body) {
+                try {
+                    expect(response.statusCode).toBe(200);
+                    //expect(body).toBe("Hello World");
 
-		it("hello world",function(done){
-		    
-		    request.get(base_url, function(error, response, body){
+                    done();
+                } catch (e) {
+                    jasmineObj.fail(e);
+                    done();
+                }
+            });
+        });
 
-				expect(response.statusCode).toBe(200);
-				//expect(body).toBe("Hello World");
+    });
 
-				done();
-		    });
-		});
+    describe("create update contact", function() {
+        var idCreated;
 
-	});
+        it("should create contact", function(done) {
+            var jasmineObj = this;
+            var contact = new Object();
+            contact.firstName = "jagan";
+            contact.lastName = "peri";
+            contact.phone = "23002300";
 
-	describe("create update contact", function(){
-		var idCreated;
+            console.log(JSON.stringify(contact));
 
-		it("should create contact",function(done){
+            request.post({
+                    url: contacts_url,
+                    body: contact,
+                    json: true
+                },
+                function(error, response, body) {
+                    try {
+                        expect(response.statusCode).toBe(200);
+                        console.log(body);
+                        idCreated = body;
+                        done();
+                    } catch (e) {
+                        jasmineObj.fail(e);
+                        done();
+                    }
+                });
+        });
 
-			var contact = new Object();
-			contact.firstName = "jagan";
-			contact.lastName = "peri";
-			contact.phone = "23002300";
+        it("should retrieve contact", function(done) {
+            var jasmineObj = this;
+            request.get({
+                    url: contacts_url + "/" + idCreated,
+                    json: true
+                },
+                function(error, response, body) {
+                    try {
+                        expect(response.statusCode).toBe(200);
+                        console.log(body);
+                        expect(body.firstName).toBe("jagan");
+                        done();
+                    } catch (e) {
+                        jasmineObj.fail(e);
+                        done();
+                    }
+                });
+        });
+        it("should update contact", function(done) {
+            var jasmineObj = this;
+            var updatedContact = new Object();
+            updatedContact.firstName = "jagan-updated";
+            request.put({
+                    url: contacts_url + "/" + idCreated,
+                    body: updatedContact,
+                    json: true
+                },
+                function(error, response, body) {
+                    try {
+                        expect(response.statusCode).toBe(200);
+                        console.log(body);
+                        expect(body.firstName).toBe("jagan-updated");
+                        expect(body.phone).toBe("23002300");
+                        done();
+                    } catch (e) {
+                        jasmineObj.fail(e);
+                        done();
+                    }
+                });
+        });
+    });
 
-			console.log(JSON.stringify(contact));
-		    
-		    request.post({url: contacts_url,
-		    			  body: contact,
-		    			  json: true
-		    			}, 
-		    		    function(error, response, body){
+    //TODO: Fill out the test case below that posts a message to a contact
+    // and retrieves it back.
+    describe("post and get message to contact", function() {
 
-							expect(response.statusCode).toBe(200);
-							console.log(body);
-							idCreated = body;
-							done();
-					    });
-		});
+        it("should post message to contact", function(done) {
+            //TODO: Write your test case here.
+            done();
 
-		it("should retrieve contact",function(done){
+        });
 
-			request.get({
-							url: contacts_url + "/" + idCreated,
-							json: true
-						},
-		    		    function(error, response, body){
+        it("should get message for contact", function(done) {
+            //TODO: Write your test case here.
+            done();
 
-							expect(response.statusCode).toBe(200);
-							console.log(body);
-							expect(body.firstName).toBe("jagan");
-							done();
-					    });
-		});
-		it("should update contact",function(done){
+        });
 
-			var updatedContact = new Object();
-			updatedContact.firstName = "jagan-updated";
-			request.put({
-							url: contacts_url + "/" + idCreated,
-							body: updatedContact,
-							json: true
-						},
-		    		    function(error, response, body){
-
-							expect(response.statusCode).toBe(200);
-							console.log(body);
-							expect(body.firstName).toBe("jagan-updated");
-							expect(body.phone).toBe("23002300");
-							done();
-					    });
-		});
-	});
-
-	//TODO: Fill out the test case below that posts a message to a contact
-	// and retrieves it back.
-	describe("post and get message to contact", function(){
-
-		it("should post message to contact", function(done){
-			//TODO: Write your test case here.
-			done();
-
-		});
-
-		it("should get message for contact", function(done){
-			//TODO: Write your test case here.
-			done();
-
-		});
-
-	});
+    });
 
 });
